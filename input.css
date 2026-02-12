@@ -1,0 +1,773 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ====== Global Animations ====== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ====== Smooth Scroll ====== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ====== Global Transitions ====== */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ====== Animation Classes ====== */
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animate-fadeInRight {
+  animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ====== Staggered Animations ====== */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* ====== Hover Effects ====== */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+}
+
+/* ====== Button Enhancements ====== */
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn_outline {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn_outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn_outline:hover::before {
+  left: 100%;
+}
+
+/* ====== Work Card Animations ====== */
+.work_card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work_card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.work_img {
+  transition: transform 0.5s ease;
+}
+
+.work_card:hover .work_img {
+  transform: scale(1.1);
+}
+
+.work_overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.work_card:hover .work_overlay {
+  transform: translateY(0);
+}
+
+.work_title {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease 0.1s;
+}
+
+.work_card:hover .work_title {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.work_desc {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease 0.2s;
+}
+
+.work_card:hover .work_desc {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ====== Social Icon Animations ====== */
+.social-icon {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+.social-icon:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px) rotate(5deg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ====== Navigation Animations ====== */
+.nav-links {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-primaryColorLight), var(--color-primaryColor));
+  transition: width 0.3s ease;
+}
+
+.nav-links:hover::after {
+  width: 100%;
+}
+
+/* ====== Hero Section Animations ====== */
+.hero-content {
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-image {
+  animation: fadeInRight 1s ease-out 0.3s both;
+}
+
+.hero-stats {
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+/* ====== Section Animations ====== */
+.section-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.section-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ====== Loading Animation ====== */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ====== Skills Section Animations ====== */
+.skill-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(10px);
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.skill-card:hover::before {
+  left: 100%;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(147, 51, 234, 0.3);
+  border-color: var(--color-primaryColorLight);
+}
+
+.skill-icon {
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover .skill-icon {
+  transform: rotate(360deg) scale(1.1);
+  filter: drop-shadow(0 0 15px rgba(147, 51, 234, 0.5));
+}
+
+.skill-percentage {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-percentage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.3), transparent);
+  transition: left 0.8s ease;
+}
+
+.skill-card:hover .skill-percentage::after {
+  left: 100%;
+}
+
+/* ====== Review Card Animations ====== */
+.review-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(10px);
+}
+
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.review-card:hover::before {
+  opacity: 1;
+}
+
+.review-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(147, 51, 234, 0.25);
+  border: 1px solid rgba(147, 51, 234, 0.2);
+}
+
+.review-avatar {
+  transition: all 0.3s ease;
+}
+
+.review-card:hover .review-avatar {
+  transform: scale(1.1);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.review-stars {
+  transition: all 0.3s ease;
+}
+
+.review-card:hover .review-stars {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+.review-text {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.review-card:hover .review-text {
+  color: var(--color-primaryColor);
+  transform: translateX(5px);
+}
+
+/* ====== Progress Bar Animations ====== */
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--progress);
+  }
+}
+
+.progress-bar {
+  height: 6px;
+  background: rgba(147, 51, 234, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primaryColorLight), var(--color-primaryColor));
+  border-radius: 3px;
+  width: var(--progress);
+  animation: progressFill 1.5s ease-out forwards;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+/* ====== Floating Animation for Skills ====== */
+@keyframes floatSkill {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+}
+
+.skill-card.animate-float {
+  animation: floatSkill 4s ease-in-out infinite;
+}
+
+/* ====== Pulse Animation for Reviews ====== */
+@keyframes pulseReview {
+  0%, 100% {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 5px 25px rgba(147, 51, 234, 0.3);
+  }
+}
+
+.review-card.animate-pulse {
+  animation: pulseReview 3s ease-in-out infinite;
+}
+
+@theme {
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 976px;
+  --breakpoint-xl: 1400px;
+
+  /* === Colors === */
+  /* --color-sectionColor: hsl(209, 100%, 97%);
+  --color-darkBodyColor: hsl(216, 100%, 4%);
+  --color-darkSectionColor: hsl(211, 100%, 12%);
+  --color-primaryColor: hsl(209, 87%, 21%);
+  --color-primaryColorLight: hsl(209, 74%, 45%);
+  --color-whiteColor: #fff;
+  --color-textColor: #DDD;
+  --color-secondaryColor: red; */
+ /* --color-sectionColor: hsl(260, 100%, 98%);
+  --color-darkBodyColor: hsl(260, 60%, 7%);
+  --color-darkSectionColor: hsl(260, 45%, 15%);
+  --color-primaryColor: hsl(265, 80%, 45%);
+  --color-primaryColorLight: hsl(265, 90%, 65%);
+  --color-whiteColor: #ffffff;
+  --color-textColor: hsl(260, 10%, 30%);
+  --color-secondaryColor: hsl(320, 80%, 55%); */
+
+ /* ====== Colors ====== */
+  --color-sectionColor: hsl(260, 90%, 10%);         /* Main background (deep purple) */
+  --color-darkBodyColor: hsl(260, 80%, 8%);         /* Darker background for footer */
+  --color-darkSectionColor: hsl(260, 70%, 15%);     /* Slightly lighter purple section */
+  --color-primaryColor: hsl(270, 85%, 55%);         /* Bright royal purple for buttons */
+  --color-primaryColorLight: hsl(270, 90%, 65%);    /* Hover / accent purple */
+  --color-whiteColor: #ffffff;                      /* White text */
+  --color-textColor: hsl(270, 20%, 85%);            /* Muted light text */
+  --color-secondaryColor: hsl(320, 80%, 60%);       /* Pinkish-magenta accent */
+
+  /* ====== Optional Neutrals ====== */
+  --color-borderLight: hsl(270, 30%, 25%);          /* For card borders */
+  --color-shadow: rgba(70, 0, 100, 0.25);           /* Subtle purple shadow */
+  --color-highlight: hsl(270, 100%, 80%);           /* Highlight for text or icons */
+
+
+
+  /* === Fonts === */
+  --font-poppins: "Poppins", sans-serif;
+  --font-Londrina: "Londrina Outline", sans-serif;
+
+ @keyframes move {
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  --animate-scaleAnimation: move 3s linear infinite;
+}
+
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+}
+
+
+/* === Animations === */
+
+@utility scale-animation {
+  animation: move 3s linear infinite;
+}
+
+/* Container  */
+
+@utility container {
+  margin-inline: auto;
+  width: 100%;
+  padding-inline: 10px;
+  
+  @media (min-width: 768px) {
+    padding-inline: 30px;
+  }
+}
+
+@layer base {
+ 
+  html{
+    @apply scroll-smooth;
+
+  }
+
+  body {
+    @apply dark:bg-darkBodyColor dark:text-textColor text-primaryColor font-poppins tracking-wider overflow-x-hidden;
+  }
+
+  section{
+
+    @apply py-16 md:pt-28 md:pb-20;
+
+
+  }
+
+
+
+
+
+
+
+  
+  .title,
+  .subtitle {
+    @apply text-4xl lg:text-6xl xl:text-[65px] font-bold
+    bg-gradient-to-r from-primaryColorLight to-primaryColor
+    dark:to-whiteColor inline-block text-transparent bg-clip-text pb-2;
+  }
+
+.subtitle{
+  @apply text-3xl md:text-4xl lg:text-5xl
+}
+
+.btn_outline{
+  @apply border border-primaryColorLight text-primaryColorLight
+  py-4 px-9 rounded-full hover:bg-primaryColorLight
+  hover:text-whiteColor duration-300;
+}
+}
+
+  .nav-links{
+    @apply relative font-bold
+  }
+
+  .nav-links::before{
+    content: '';
+    @apply absolute w-full h-[2px] bg-gradient-to-r from-primaryColorLight to-primaryColor -bottom-[5px] left-0 scale-x-0 transition-transform ease-in-out origin-right duration-500;
+  }
+
+.nav-links:hover::before {
+  @apply scale-x-100 origin-left;
+}
+
+
+/* .nav-links {
+  @apply relative font-medium text-white cursor-pointer;
+}
+
+.nav-links::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-image: linear-gradient(to right, var(--color-primaryColorLight), var(--color-primaryColor));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease-in-out;
+}
+
+.nav-links:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+} */
+
+
+
+.btn {
+  @apply relative overflow-hidden bg-gradient-to-r from-primaryColorLight to-primaryColor text-whiteColor px-7 py-3 
+  rounded-full capitalize font-bold flex justify-center items-center;
+}
+.btn::before {
+  content: '';
+  @apply absolute w-[100%] h-[100%] bg-gradient-to-r from-primaryColor to-primaryColorLight top-0 left-0 rounded-full scale-x-0 transition-transform ease-in-out origin-right duration-300;
+}
+.btn:hover:before {
+  @apply scale-x-100 origin-left;
+}
+
+
+@layer utilities {
+  .social-icon {
+    /* Resting: Light Mode = Light Purple; Dark Mode = White */
+    @apply relative h-10 w-10 rounded-full grid place-items-center cursor-pointer duration-300 overflow-hidden z-10;
+
+    /* Resting Colors: Light Mode */
+    @apply text-primaryColorLight border-primaryColorLight border-2;
+    
+    /* Resting Colors: Dark Mode = White Icon & Border */
+    @apply dark:text-whiteColor dark:border-whiteColor;
+
+    /* Light Mode Hover: Text turns white (on dark fill), Border turns dark */
+    @apply hover:text-whiteColor hover:border-primaryColor;
+
+    /* 🌟 DARK MODE FIX: Hover Icon = White Icon. Border remains light. */
+    @apply dark:hover:text-whiteColor dark:hover:border-primaryColorLight;
+  }
+
+  .social-icon::before {
+    content: '';
+    @apply absolute w-full h-full inset-0 rounded-full scale-0
+    transition-all ease-in-out duration-300 z-[-1];
+
+    /* Light Mode: Fill with Dark Purple */
+    @apply bg-primaryColor; 
+
+    /* Dark Mode: Fill with Light Purple */
+    @apply dark:bg-primaryColorLight;
+  }
+
+  .social-icon:hover::before {
+    @apply scale-100;
+  }
+
+ /* My Quality Services */
+
+/* ===== My Work Section ===== */
+
+.tab {
+  @apply px-6 py-2 rounded-full font-semibold cursor-pointer text-textColor duration-300;
+}
+
+.tab.active {
+  @apply bg-gradient-to-r from-primaryColorLight to-primaryColor text-whiteColor;
+}
+
+/* Project Card */
+.work_card {
+  @apply relative overflow-hidden rounded-3xl border border-borderLight shadow-lg cursor-pointer;
+}
+
+.work_img {
+  @apply w-full h-64 object-cover duration-500;
+}
+
+.work_card:hover .work_img {
+  @apply scale-110;
+}
+
+/* Overlay */
+.work_overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/80 to-transparent
+  flex flex-col justify-end p-6 opacity-0 duration-500;
+}
+
+.work_card:hover .work_overlay {
+  @apply opacity-100;
+}
+
+.work_title {
+  @apply text-whiteColor text-xl font-bold;
+}
+
+.work_desc {
+  @apply text-gray-300 text-sm mt-1;
+}
+
+.work_btn {
+  @apply bg-primaryColorLight text-whiteColor px-4 py-2 rounded-full text-sm hover:bg-primaryColor duration-300;
+}
+
+.work_btn_outline {
+  @apply border border-primaryColorLight text-primaryColorLight px-4 py-2 rounded-full text-sm hover:bg-primaryColorLight hover:text-whiteColor duration-300;
+}
+
